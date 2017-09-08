@@ -1,0 +1,13 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: golang, tag: 1.6-alpine}
+
+inputs:
+- name: resource-web-app
+  path: gopath/src/github.com/pdesrochers01/simple-go-web-app
+
+run:
+  path: ci/task_run_tests.sh
