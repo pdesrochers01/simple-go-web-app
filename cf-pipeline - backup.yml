@@ -40,20 +40,3 @@ jobs:
       manifest: resource-app/manifest.yml
       path: resource-app
       current_app_name: simple-go-web-app
-- name: load-test
-  public: true
-  plan:
-  - get: resource-app
-    trigger: true
-    passed:
-      - job-deploy-app
-  - task: load-test
-    file: resource-app/ci/load.yml
-    config:
-      params:
-        "CFUSER": paul.desrochers@multiforce.com
-        "CFPASS": Breakeven1!
-        "ORG": Multiforce
-        "SPACE": QC
-        "API": https://api.run.pivotal.io
-        "APPNAME": simple-go-web-app
