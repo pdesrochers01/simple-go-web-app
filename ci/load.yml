@@ -10,4 +10,4 @@ inputs:
   path: gopath/src/github.com/pdesrochers01/simple-go-web-app
 
 run:
-  path: ci/run_load.sh
+  path: gopath/src/github.com/pdesrochers01/simple-go-web-app/ci/run_load.sh
