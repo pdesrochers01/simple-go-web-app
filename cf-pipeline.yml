@@ -39,3 +39,4 @@ jobs:
     params:
       manifest: resource-app/manifest.yml
       path: resource-app
+      current_app_name: simple-go-web-app
