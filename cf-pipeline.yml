@@ -37,7 +37,7 @@ jobs:
     trigger: true
   - task: web-app-tests
     file: resource-tutorial/10_job_inputs/task_run_tests.yml
-- name: job-deploy-app
+- name: Deploy-QC
   serial: true
   plan:
   - get: resource-app
@@ -49,13 +49,13 @@ jobs:
       manifest: resource-app/manifest.yml
       path: resource-app
       current_app_name: simple-go-web-app
-- name: load-test
+- name: Load-test
   public: true
   plan:
   - get: resource-app
     trigger: true
     passed:
-      - job-deploy-app
+      - Deploy-QC
   - task: load-test
     config:
       platform: linux
@@ -65,13 +65,13 @@ jobs:
       run:
         path: echo
         args: ["Hello, world!"]
-- name: job-deploy-prod
+- name: Deploy-prod
   serial: true
   plan:
   - get: resource-app
     trigger: true
     passed: 
-      - load-test
+      - Load-test
   - put: resource-deploy-web-app-prod
     params:
       manifest: resource-app/manifest.yml
