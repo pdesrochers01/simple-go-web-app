@@ -9,7 +9,7 @@ resources:
   source:
     uri: https://github.com/pdesrochers01/simple-go-web-app.git
 
-- name: resource-deploy-web-app-prod
+- name: PCF-prod
   type: cf
   source:
     api: https://api.run.pivotal.io
@@ -18,7 +18,7 @@ resources:
     organization: Multiforce
     space: prod
     skip_cert_check: true
-- name: resource-deploy-web-app
+- name: PCF-QC
   type: cf
   source:
     api: https://api.run.pivotal.io
@@ -44,7 +44,7 @@ jobs:
     trigger: true
     passed: 
       - Unit-testing
-  - put: resource-deploy-web-app
+  - put: PCF-QC
     params:
       manifest: resource-app/manifest.yml
       path: resource-app
@@ -72,7 +72,7 @@ jobs:
     trigger: true
     passed: 
       - Load-test
-  - put: resource-deploy-web-app-prod
+  - put: PCF-prod
     params:
       manifest: resource-app/manifest.yml
       path: resource-app
