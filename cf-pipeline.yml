@@ -29,7 +29,7 @@ resources:
     skip_cert_check: true
 
 jobs:
-- name: job-test-app
+- name: Unit-testing
   public: true
   plan:
   - get: resource-tutorial
@@ -43,7 +43,7 @@ jobs:
   - get: resource-app
     trigger: true
     passed: 
-      - job-test-app
+      - Unit-testing
   - put: resource-deploy-web-app
     params:
       manifest: resource-app/manifest.yml
