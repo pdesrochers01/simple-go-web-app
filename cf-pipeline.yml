@@ -1,6 +1,6 @@
 ---
 resources:
-- name: resource-tutorial
+- name: resource-CI-CD
   type: git
   source:
     uri: https://github.com/starkandwayne/concourse-tutorial.git
@@ -32,11 +32,11 @@ jobs:
 - name: Unit-testing
   public: true
   plan:
-  - get: resource-tutorial
+  - get: resource-CI-CD
   - get: resource-app
     trigger: true
   - task: web-app-tests
-    file: resource-tutorial/10_job_inputs/task_run_tests.yml
+    file: resource-CI-CD/10_job_inputs/task_run_tests.yml
 - name: Deploy-QC
   serial: true
   plan:
