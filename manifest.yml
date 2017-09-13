@@ -1,7 +1,6 @@
 ---
 applications:
 - name: simple-go-web-app
-  host: hello-multiforce
   disk: 256M
   memory: 128M
   random-route: true
