@@ -36,7 +36,7 @@ jobs:
   - get: resource-app
     trigger: true
   - task: web-app-tests
-    file: resource-tutorial/tutorials/basic/job_inputs/task_run_tests.yml
+    file: resource-tutorial/tutorials/basic/job-inputs/task_run_tests.yml
 - name: Deploy-QC
   serial: true
   plan:
